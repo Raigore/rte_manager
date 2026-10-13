@@ -1,13 +1,8 @@
----
-layout: default
-title: RTE Manager Manual
----
-
 # RTE Manager
 
 Configure TYPO3's rich-text editor through **Theme → RTE Manager**. Manage locally hosted fonts, a named color palette, font sizes, SVG icons, custom styles and element defaults in one backend module—with live previews.
 
-[View on TER](https://extensions.typo3.org/extension/rte_manager) · [Source code](https://github.com/Raigore/rte_manager) · [Report an issue](https://github.com/Raigore/rte_manager/issues)
+[View on TER](https://extensions.typo3.org/extension/rte_manager) · [Source code](https://github.com/kst3/rte_manager/) · [Report an issue](https://github.com/kst3/rte_manager/issues)
 
 ## Installation
 
@@ -120,4 +115,4 @@ Back up the entire `fileadmin/rte_manager` directory together with your database
 
 ## Support
 
-For questions or problems, [open an issue on GitHub](https://github.com/Raigore/rte_manager/issues). Include your TYPO3 and extension versions, the steps to reproduce the problem and any relevant error messages.
+For questions or problems, [open an issue on GitHub](https://github.com/kst3/rte_manager/issues). Include your TYPO3 and extension versions, the steps to reproduce the problem and any relevant error messages.
