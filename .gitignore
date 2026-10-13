@@ -1,4 +1,5 @@
 /Configuration/RTE/Generated.yaml
+/Tests/
 /vendor/
 /node_modules/
 *.log
