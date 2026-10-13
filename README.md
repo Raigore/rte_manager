@@ -14,7 +14,7 @@ Composer package: `kst3/rte-manager` | Extension key: `rte_manager`
 - Write access for the PHP process to `fileadmin/rte_manager` beneath the public
   document root, including `Configuration`, `fonts` and `styles`.
 
-For Composer installations, once the package is published:
+For Composer installations:
 
 ```sh
 composer require kst3/rte-manager:^1.0
@@ -174,53 +174,14 @@ incomplete save, restore `Generated.yaml`, `fonts/fonts.css` and
 `styles/classes.css` from the same backup, together with any required font files.
 Do not include site-generated files in an extension release archive.
 
-## Upgrading from the development extension
-
-Version 1.0.0 uses `rte_manager`, `kst3/rte-manager` and `Kst3\RteManager`.
-Replace the old Composer requirement and remove the old extension package before
-installing this one. On first initialization, existing `fileadmin/rte_management`
-settings, fonts and styles are copied to `fileadmin/rte_manager`. The old directory
-is kept for rollback; an existing new preset is never overwritten. An older
-extension-local `Configuration/RTE/Generated.yaml` is also recognized when no
-external preset exists.
-
-Back up the database and fileadmin before upgrading. Update explicit old preset
-paths in site configuration, module bookmarks and non-admin group permissions.
-Previously saved content CSS classes stay unchanged.
-
 ## Support and release history
 
 Contact [Konstantin Stolzenburg](mailto:konstantin.stolzenburg@gmail.com) with the
 extension, TYPO3 and PHP versions, steps to reproduce, and relevant error output.
-Remove private content and credentials from reports. A public source repository
-and issue tracker are not currently listed in the package metadata.
+Remove private content and credentials from reports.
 
-See [CHANGELOG.md](CHANGELOG.md) for release notes.
-
-## Development and translations
-
-English interface strings live in `Resources/Private/Language/locallang.xlf`
-(XLIFF 1.2). Module labels, templates, validation messages and JavaScript use these
-labels. User-defined content is not translated. Preserve translation IDs and
-numbered placeholders such as `%1$s`; `%%` represents a literal percent sign in
-formatted validation messages.
-
-The source checkout includes smoke tests; release archives can exclude `Tests/`.
-From a development project with the extension at `packages/rte_manager`, run:
-
-```sh
-ddev exec php packages/rte_manager/Tests/Functional/ReleaseMetadataSmoke.php
-ddev exec php packages/rte_manager/Tests/Functional/RteSettingsSmoke.php
-ddev exec php packages/rte_manager/Tests/Functional/PresetPersistenceSmoke.php
-ddev exec php packages/rte_manager/Tests/Functional/LocalizationSmoke.php
-```
-
-Editor HTML round-trip checks use the installed CKEditor modules and jsdom:
-
-```sh
-ddev exec npm install --prefix /tmp/rte-class-tests jsdom --no-save --no-audit --no-fund
-ddev exec env NODE_PATH=/tmp/rte-class-tests/node_modules node packages/rte_manager/Tests/Functional/FormattingClassesSmoke.mjs
-```
+- [Source repository](https://github.com/Raigore/rte_manager)
+- [Issue tracker](https://github.com/Raigore/rte_manager/issues)
 
 ## License and uploaded assets
 
