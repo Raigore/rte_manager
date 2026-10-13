@@ -1,0 +1,336 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Module" />
+<f:section name="Before">
+    <f:asset.module identifier="@typo3/backend/tab.js" />
+    <f:asset.module identifier="@kst3/rte-manager/rte-styles.js" />
+    <f:asset.module identifier="@kst3/rte-manager/rte-colors.js" />
+    <f:asset.module identifier="@kst3/rte-manager/rte-fonts.js" />
+    <f:asset.module identifier="@kst3/rte-manager/rte-sizes.js" />
+    <f:asset.module identifier="@kst3/rte-manager/rte-icons.js" />
+    <f:asset.module identifier="@kst3/rte-manager/default-css-editor.js" />
+    <f:asset.module identifier="@kst3/rte-manager/rte-previews.js" />
+    <f:asset.module identifier="@kst3/rte-manager/rte-entries.js" />
+    <f:asset.css identifier="rte-manager" href="EXT:rte_manager/Resources/Public/Css/rte-manager.css" />
+</f:section>
+<f:section name="Content">
+    <form action="{f:be.uri(route: 'rte_manager')}" method="post" enctype="multipart/form-data" data-rte-previews data-font-base="{fontPreviewBase}" data-preview-text="{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.the.quick.brown.fox.jumps.over.the.lazy.dog.0123456789')}">
+        <input type="hidden" name="rteForm" value="1" />
+        <ul class="nav nav-tabs" role="tablist">
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="rte-font-tab" data-typo3-tab="#rte-font" type="button" role="tab" aria-controls="rte-font" aria-selected="false">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.fonts')}</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="rte-colors-tab" data-typo3-tab="#rte-colors" type="button" role="tab" aria-controls="rte-colors" aria-selected="false">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.colors')}</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="rte-sizes-tab" data-typo3-tab="#rte-sizes" type="button" role="tab" aria-controls="rte-sizes" aria-selected="false">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.sizes')}</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="rte-icons-tab" data-typo3-tab="#rte-icons" type="button" role="tab" aria-controls="rte-icons" aria-selected="false">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.icons')}</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="rte-custom-styles-tab" data-typo3-tab="#rte-custom-styles" type="button" role="tab" aria-controls="rte-custom-styles" aria-selected="true">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.styles')}</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="rte-defaults-tab" data-typo3-tab="#rte-defaults" type="button" role="tab" aria-controls="rte-defaults" aria-selected="false">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.defaults')}</button>
+            </li>
+        </ul>
+        <div class="tab-content pt-3">
+            <div class="tab-pane" id="rte-icons" role="tabpanel" aria-labelledby="rte-icons-tab" tabindex="0">
+                <div class="form-section" data-rte-icons>
+                    <div class="form-check form-switch form-check-size-input">
+                        <input type="hidden" name="rte[enableIcons]" value="0" />
+                        <input class="form-check-input" type="checkbox" id="rte-enable-icons" name="rte[enableIcons]" value="1" {f:if(condition: rte.enableIcons, then: 'checked="checked"')} />
+                        <label class="form-check-label" for="rte-enable-icons">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.enable.icon.selection.in.the.rte')}</label>
+                    </div>
+                    <p class="form-text">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.paste.self.contained.svg.icons.with.a.viewbox.made.from.paths.and.shapes.use.currentc')}</p>
+                    <div data-rte-icon-list>
+                        <f:for each="{rte.icons}" as="icon" iteration="iterator"><f:render section="RteIconRow" arguments="{icon: icon, index: iterator.index}" /></f:for>
+                    </div>
+                    <template><f:render section="RteIconRow" arguments="{index: '__INDEX__'}" /></template>
+                    <button class="btn btn-default mb-3" type="button" data-rte-icon-add>{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.add.icon')}</button>
+                </div>
+            </div>
+            <div class="tab-pane" id="rte-font" role="tabpanel" aria-labelledby="rte-font-tab" tabindex="0">
+                <div class="form-section" data-rte-fonts>
+                    <div class="form-check form-switch form-check-size-input">
+                        <input type="hidden" name="rte[enableFonts]" value="0" />
+                        <input type="checkbox" class="form-check-input" id="rte-enable-fonts" name="rte[enableFonts]" value="1" {f:if(condition: rte.enableFonts, then: 'checked="checked"')} />
+                        <label class="form-check-label" for="rte-enable-fonts">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.enable.font.selection.in.the.rte')}</label>
+                    </div>
+                    <p class="form-text">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.upload.woff2.woff.ttf.or.otf.files.up.to.10.mb.each.use.the.same.family.name.for.diff')}</p>
+                    <div data-rte-font-list>
+                        <div class="mb-3">
+                            <h3>{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.default.font')}</h3>
+                            <div class="rte-default-row">
+                                <div>
+                                    <label class="form-label" for="rte-default-font-file">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.font.file')}</label>
+                                    <input type="hidden" name="rte[defaultFont][file]" value="{rte.defaultFont.file}" />
+                                    <input class="form-control" type="file" id="rte-default-font-file" name="defaultFontFile" accept=".woff2,.woff,.ttf,.otf" />
+                                </div>
+                                <div>
+                                    <label class="form-label" for="rte-default-font-weight">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.weight')}</label>
+                                    <select class="form-select" id="rte-default-font-weight" name="rte[defaultFont][weight]">
+                                        <f:for each="{fontWeights}" as="label" key="weight"><option value="{weight}" {f:if(condition: '{rte.defaultFont.weight} == {weight}', then: 'selected="selected"')}>{label}</option></f:for>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="form-label" for="rte-default-font-style">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.style')}</label>
+                                    <select class="form-select" id="rte-default-font-style" name="rte[defaultFont][style]">
+                                        <f:for each="{fontStyles}" as="label" key="style"><option value="{style}" {f:if(condition: '{rte.defaultFont.style} == {style}', then: 'selected="selected"')}>{label}</option></f:for>
+                                    </select>
+                                </div>
+                            </div>
+                            <f:if condition="{rte.defaultFont.file}">
+                                <p class="form-text">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.a.default.font.is.hosted.leave.the.upload.empty.to.keep.it')}</p>
+                                <label class="form-check"><input class="form-check-input" type="checkbox" name="rte[defaultFont][clear]" value="1" />{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.clear.default.font.on.save')}</label>
+                            </f:if>
+                        </div>
+                        <f:for each="{rte.fonts}" as="font" iteration="iterator">
+                            <f:render section="RteFontRow" arguments="{font: font, index: iterator.index, fontWeights: fontWeights, fontStyles: fontStyles}" />
+                        </f:for>
+                    </div>
+                    <template data-rte-font-template>
+                        <f:render section="RteFontRow" arguments="{index: '__INDEX__', fontWeights: fontWeights, fontStyles: fontStyles}" />
+                    </template>
+                    <button type="button" class="btn btn-default mb-3" data-rte-font-add><span aria-hidden="true">+</span> {f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.add.font')}</button>
+                </div>
+            </div>
+            <div class="tab-pane" id="rte-colors" role="tabpanel" aria-labelledby="rte-colors-tab" tabindex="0">
+                <div class="form-section" data-rte-colors>
+                    <div class="form-check form-switch form-check-size-input">
+                        <input type="hidden" name="rte[enableColors]" value="0" />
+                        <input type="checkbox" class="form-check-input" id="rte-enable-colors" name="rte[enableColors]" value="1" {f:if(condition: rte.enableColors, then: 'checked="checked"')} />
+                        <label class="form-check-label" for="rte-enable-colors">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.enable.color.palette.in.the.rte')}</label>
+                    </div>
+                    <p class="form-text">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.adds.a.text.color.palette.to.the.rte.toolbar.add.your.colors.below.or.leave.the.list')}</p>
+                    <div data-rte-color-list>
+                        <div class="mb-3" data-rte-default-color>
+                            <label class="form-label" for="rte-default-color">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.default.color')}</label>
+                            <div class="rte-color-inputs">
+                                <input class="rte-color-picker" type="color" value="{f:if(condition: rte.defaultColor, then: rte.defaultColor, else: '#000000')}" aria-label="{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.choose.default.color')}" data-rte-color-picker />
+                                <input class="form-control" type="text" id="rte-default-color" name="rte[defaultColor]" value="{rte.defaultColor}" placeholder="{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.keep.existing.css')}" maxlength="7" data-rte-color-value />
+                            </div>
+                        </div>
+                        <f:for each="{rte.colors}" as="color" iteration="iterator">
+                            <f:render section="RteColorRow" arguments="{color: color, index: iterator.index}" />
+                        </f:for>
+                    </div>
+                    <template data-rte-color-template>
+                        <f:render section="RteColorRow" arguments="{index: '__INDEX__'}" />
+                    </template>
+                    <button type="button" class="btn btn-default mb-3" data-rte-color-add><span aria-hidden="true">+</span> {f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.add.color')}</button>
+                </div>
+            </div>
+            <div class="tab-pane" id="rte-sizes" role="tabpanel" aria-labelledby="rte-sizes-tab" tabindex="0">
+                <div class="form-section">
+                    <div class="form-check form-switch form-check-size-input">
+                        <input type="hidden" name="rte[enableSizes]" value="0" />
+                        <input type="checkbox" class="form-check-input" id="rte-enable-sizes" name="rte[enableSizes]" value="1" {f:if(condition: rte.enableSizes, then: 'checked="checked"')} />
+                        <label class="form-check-label" for="rte-enable-sizes">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.enable.font.sizes.in.the.rte')}</label>
+                    </div>
+                    <p class="form-text">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.set.the.default.size.or.leave.blank.to.use.existing.css.or.the.browser.default.the.ht')}</p>
+                    <div class="row">
+                        <f:for each="{sizeElements}" as="label" key="element">
+                            <div class="col-md-6 col-lg-4 mb-3">
+                                <label class="form-label" for="rte-default-size-{element}">{label}</label>
+                                <input class="form-control" type="text" id="rte-default-size-{element}" name="rte[defaultFontSizes][{element}]" value="{rte.defaultFontSizes.{element}}" maxlength="32" placeholder="{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.keep.existing.css')}" />
+                            </div>
+                        </f:for>
+                    </div>
+                </div>
+                <div class="form-section" data-rte-sizes>
+                    <p class="form-text" id="rte-size-help">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.add.sizes.such.as.16.18px.1.25rem.or.120.numbers.without.a.unit.use.pixels.supported')}</p>
+                    <div data-rte-size-list>
+                        <f:for each="{rte.sizes}" as="size" iteration="iterator">
+                            <f:render section="RteSizeRow" arguments="{size: size, index: iterator.index}" />
+                        </f:for>
+                    </div>
+                    <template data-rte-size-template>
+                        <f:render section="RteSizeRow" arguments="{index: '__INDEX__'}" />
+                    </template>
+                    <button type="button" class="btn btn-default mb-3" data-rte-size-add><span aria-hidden="true">+</span> {f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.add.size')}</button>
+                </div>
+            </div>
+            <div class="tab-pane pb-3" id="rte-defaults" role="tabpanel" aria-labelledby="rte-defaults-tab" tabindex="0">
+                <div class="form-section">
+                    <p class="form-text">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.choose.default.formatting.for.each.element.in.the.rte.and.on.the.website.default.keep')}</p>
+                    <f:for each="{defaultRows}" as="row">
+                        <details class="rte-entry">
+                            <summary><strong>{row.element}</strong></summary>
+                            <div class="rte-default-row">
+                            <f:for each="{row.fields}" as="field">
+                                <div>
+                                    <label class="form-label" for="rte-default-{row.element}-{field.name}">{field.label}</label>
+                                    <select class="form-select" id="rte-default-{row.element}-{field.name}" name="rte[elementDefaults][{row.element}][{field.name}]">
+                                        <f:for each="{field.options}" as="option">
+                                            <option value="{option.value}" {f:if(condition: option.selected, then: 'selected="selected"')}>{option.label}</option>
+                                        </f:for>
+                                    </select>
+                                </div>
+                            </f:for>
+                            </div>
+                            <label class="form-label" for="rte-default-{row.element}-css">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.additional.css')}</label>
+                            <p class="form-text">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.supports.declarations.and.state.blocks.such.as.hover.color.var.color.primary')}</p>
+                            <textarea class="form-control font-monospace" id="rte-default-{row.element}-css" name="rte[elementDefaults][{row.element}][css]" rows="6" maxlength="8000" spellcheck="false" data-default-css>{row.css}</textarea>
+                        </details>
+                    </f:for>
+                </div>
+            </div>
+            <div class="tab-pane active" id="rte-custom-styles" role="tabpanel" aria-labelledby="rte-custom-styles-tab" tabindex="0">
+        <div class="form-section" data-rte-styles>
+                    <div class="form-group">
+                        <div class="form-check form-switch form-check-size-input">
+                            <input type="hidden" name="rte[overwriteDefaults]" value="0" />
+                            <input type="checkbox" class="form-check-input" id="rte-overwrite-defaults" name="rte[overwriteDefaults]" value="1" {f:if(condition: rte.overwriteDefaults, then: 'checked="checked"')} />
+                            <label class="form-check-label" for="rte-overwrite-defaults">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.overwrite.default.rte.styles.and.formats')}</label>
+                        </div>
+                        <p class="form-text">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.removes.lead.small.and.muted.sets.the.format.dropdown.to.paragraph.and.heading.1.thro')}</p>
+                    </div>
+            <p class="form-text" id="rte-style-help">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.select.one.or.more.elements.headings.applies.to.h1.through.h6.enter.css.classes.witho')}</p>
+            <div data-rte-style-list>
+                <f:for each="{rte.styles}" as="style" iteration="iterator">
+                    <f:render section="RteStyleRow" arguments="{style: style, index: iterator.index, elementOptions: style.elementOptions, formatFields: style.formatFields}" />
+                </f:for>
+            </div>
+            <template data-rte-style-template>
+                <f:render section="RteStyleRow" arguments="{index: '__INDEX__', elementOptions: elementOptions, formatFields: styleFields}" />
+            </template>
+            <button type="button" class="btn btn-default mb-3" data-rte-style-add><span aria-hidden="true">+</span> {f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.add.style')}</button>
+        </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.save')}</button>
+    </form>
+</f:section>
+<f:section name="RteIconRow">
+    <details class="rte-entry" data-rte-entry="icon">
+        <summary><strong data-rte-entry-title><f:if condition="{icon.name}"><f:then>{icon.name}</f:then><f:else><f:translate key="LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.new.icon" /></f:else></f:if></strong><span class="rte-entry-meta" data-rte-entry-meta></span></summary>
+        <div class="mb-3">
+            <label class="form-label" for="rte-icon-name-{index}">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.icon.name')}</label>
+            <input class="form-control" id="rte-icon-name-{index}" name="rte[icons][{index}][name]" value="{icon.name}" maxlength="120" placeholder="{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.arrow.right')}" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="rte-icon-svg-{index}">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.svg.code')}</label>
+            <textarea class="form-control font-monospace" id="rte-icon-svg-{index}" name="rte[icons][{index}][svg]" rows="6" maxlength="50000" spellcheck="false">{icon.svg}</textarea>
+        </div>
+        <button class="btn btn-danger" type="button" data-rte-icon-remove>{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.remove.icon')}</button>
+    </details>
+</f:section>
+<f:section name="RteStyleRow">
+    <details class="rte-entry" data-rte-style-row data-rte-entry="style">
+        <summary><strong data-rte-style-title data-rte-entry-title><f:if condition="{style.title}"><f:then>{style.title}</f:then><f:else><f:translate key="LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.new.style" /></f:else></f:if></strong><span class="rte-entry-meta" data-rte-entry-meta></span></summary>
+        <div class="rte-style-row">
+            <div>
+        <label class="form-label" for="rte-title-{index}">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.style.name')}</label>
+        <input class="form-control" type="text" id="rte-title-{index}" name="rte[styles][{index}][title]" value="{style.title}" maxlength="120" placeholder="{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.highlight')}" />
+            </div>
+            <div>
+                <div class="form-label" id="rte-elements-label-{index}">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.html.elements')}</div>
+                <details class="rte-elements" data-rte-elements>
+                    <summary class="form-select" id="rte-elements-{index}" aria-labelledby="rte-elements-label-{index}" aria-describedby="rte-style-help">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.choose.elements')}</summary>
+                    <div class="rte-elements-menu">
+                        <f:for each="{elementOptions}" as="option">
+                            <label class="form-check rte-elements-option" for="rte-element-{index}-{option.name}">
+                                <input class="form-check-input" type="checkbox" id="rte-element-{index}-{option.name}" name="rte[styles][{index}][elements][]" value="{option.name}" data-label="{option.label}" {f:if(condition: option.selected, then: 'checked="checked"')} />
+                                <span>{option.label}</span>
+                            </label>
+                        </f:for>
+                    </div>
+                </details>
+            </div>
+            <div>
+        <label class="form-label" for="rte-classes-{index}">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.css.class')}</label>
+        <input class="form-control" type="text" id="rte-classes-{index}" name="rte[styles][{index}][classes]" value="{style.classes}" placeholder="text-highlight" aria-describedby="rte-style-help" />
+            </div>
+        <button type="button" class="btn btn-danger" data-rte-style-remove>{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.remove.style')}</button>
+        <div class="rte-style-formatting">
+            <div class="rte-default-row">
+                <f:for each="{formatFields}" as="field">
+                    <div>
+                        <label class="form-label" for="rte-style-{index}-{field.name}">{field.label}</label>
+                        <select class="form-select" id="rte-style-{index}-{field.name}" name="rte[styles][{index}][{field.name}]">
+                            <f:for each="{field.options}" as="option">
+                                <option value="{option.value}" {f:if(condition: option.selected, then: 'selected="selected"')}>{option.label}</option>
+                            </f:for>
+                        </select>
+                    </div>
+                </f:for>
+            </div>
+            <label class="form-label" for="rte-style-{index}-css">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.additional.css')}</label>
+            <p class="form-text">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.supports.declarations.and.state.blocks.such.as.hover.color.var.color.primary')}</p>
+            <textarea class="form-control font-monospace" id="rte-style-{index}-css" name="rte[styles][{index}][css]" rows="6" maxlength="8000" spellcheck="false" data-default-css>{style.css}</textarea>
+        </div>
+    </div>
+    </details>
+</f:section>
+<f:section name="RteColorRow">
+    <details class="rte-entry" data-rte-color-row data-rte-entry="color">
+        <summary><strong data-rte-entry-title><f:if condition="{color.label}"><f:then>{color.label}</f:then><f:else><f:translate key="LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.new.color" /></f:else></f:if></strong><span class="rte-entry-meta" data-rte-entry-meta></span></summary>
+        <div class="rte-color-row">
+        <div>
+            <label class="form-label" for="rte-color-label-{index}">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.color.name')}</label>
+            <input class="form-control" type="text" id="rte-color-label-{index}" name="rte[colors][{index}][label]" value="{color.label}" maxlength="120" placeholder="{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.brand.blue')}" />
+        </div>
+        <div>
+            <label class="form-label" for="rte-color-value-{index}">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.color')}</label>
+            <div class="rte-color-inputs">
+                <input class="rte-color-picker" type="color" value="{f:if(condition: color.color, then: color.color, else: '#000000')}" aria-label="{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.choose.color')}" data-rte-color-picker />
+                <input class="form-control" type="text" id="rte-color-value-{index}" name="rte[colors][{index}][color]" value="{color.color}" placeholder="#336699" pattern="#[a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]([a-fA-F0-9][a-fA-F0-9][a-fA-F0-9])?" maxlength="7" data-rte-color-value />
+            </div>
+        </div>
+        <button type="button" class="btn btn-danger" data-rte-color-remove>{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.remove.color')}</button>
+        </div>
+    </details>
+</f:section>
+<f:section name="RteFontRow">
+    <details class="rte-entry" data-rte-font-row data-rte-entry="font">
+        <summary><strong data-rte-entry-title><f:if condition="{font.family}"><f:then>{font.family}</f:then><f:else><f:translate key="LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.new.font" /></f:else></f:if></strong><span class="rte-entry-meta" data-rte-entry-meta></span></summary>
+        <div class="rte-font-row">
+        <div>
+            <label class="form-label" for="rte-font-family-{index}">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.font.name')}</label>
+            <input class="form-control" type="text" id="rte-font-family-{index}" name="rte[fonts][{index}][family]" value="{font.family}" maxlength="80" placeholder="{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.brand.sans')}" />
+        </div>
+        <div>
+            <label class="form-label" for="rte-font-weight-{index}">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.weight')}</label>
+            <select class="form-select" id="rte-font-weight-{index}" name="rte[fonts][{index}][weight]">
+                <f:for each="{fontWeights}" as="label" key="weight">
+                    <option value="{weight}" {f:if(condition: '{font.weight} == {weight}', then: 'selected="selected"')}>{label}</option>
+                </f:for>
+            </select>
+        </div>
+        <div>
+            <label class="form-label" for="rte-font-style-{index}">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.style')}</label>
+            <select class="form-select" id="rte-font-style-{index}" name="rte[fonts][{index}][style]">
+                <f:for each="{fontStyles}" as="label" key="style">
+                    <option value="{style}" {f:if(condition: '{font.style} == {style}', then: 'selected="selected"')}>{label}</option>
+                </f:for>
+            </select>
+        </div>
+        <div>
+            <label class="form-label" for="rte-font-file-{index}"><f:if condition="{font.file}"><f:then>{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.replace.hosted.font.optional')}</f:then><f:else>{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.font.file')}</f:else></f:if></label>
+            <input type="hidden" name="rte[fonts][{index}][file]" value="{font.file}" />
+            <input class="form-control" type="file" id="rte-font-file-{index}" name="fontFiles[{index}]" accept=".woff2,.woff,.ttf,.otf" />
+        </div>
+        <button type="button" class="btn btn-danger" data-rte-font-remove>{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.remove.font')}</button>
+        </div>
+    </details>
+</f:section>
+<f:section name="RteSizeRow">
+    <details class="rte-entry" data-rte-size-row data-rte-entry="size">
+        <summary><strong data-rte-entry-title><f:if condition="{size.name}"><f:then>{size.name}</f:then><f:else><f:translate key="LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.new.size" /></f:else></f:if></strong><span class="rte-entry-meta" data-rte-entry-meta></span></summary>
+        <div class="rte-size-row">
+        <div>
+            <label class="form-label" for="rte-size-name-{index}">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.size.name')}</label>
+            <input class="form-control" type="text" id="rte-size-name-{index}" name="rte[sizes][{index}][name]" value="{size.name}" placeholder="large" maxlength="80" />
+        </div>
+        <div>
+            <label class="form-label" for="rte-size-value-{index}">{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.size')}</label>
+            <input class="form-control" type="text" id="rte-size-value-{index}" name="rte[sizes][{index}][value]" value="{size.value}" placeholder="1.25rem" maxlength="32" aria-describedby="rte-size-help" />
+        </div>
+        <button type="button" class="btn btn-danger" data-rte-size-remove>{f:translate(key: 'LLL:EXT:rte_manager/Resources/Private/Language/locallang.xlf:label.remove.size')}</button>
+        </div>
+    </details>
+</f:section>
+</html>

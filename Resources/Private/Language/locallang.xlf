@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="messages" product-name="rte_manager">
+    <body>
+      <trans-unit id="label.preview.text" resname="label.preview.text">
+        <source>Preview text</source>
+      </trans-unit>
+      <trans-unit id="label.previews.update.before.saving.hover.or.focus.the.sample.to.check.state.styles.fronten" resname="label.previews.update.before.saving.hover.or.focus.the.sample.to.check.state.styles.fronten">
+        <source>Previews update before saving. Hover or focus the sample to check state styles. Frontend theme CSS is not included.</source>
+      </trans-unit>
+      <trans-unit id="label.fonts" resname="label.fonts">
+        <source>Fonts</source>
+      </trans-unit>
+      <trans-unit id="label.colors" resname="label.colors">
+        <source>Colors</source>
+      </trans-unit>
+      <trans-unit id="label.sizes" resname="label.sizes">
+        <source>Sizes</source>
+      </trans-unit>
+      <trans-unit id="label.icons" resname="label.icons">
+        <source>Icons</source>
+      </trans-unit>
+      <trans-unit id="label.styles" resname="label.styles">
+        <source>Styles</source>
+      </trans-unit>
+      <trans-unit id="label.defaults" resname="label.defaults">
+        <source>Defaults</source>
+      </trans-unit>
+      <trans-unit id="label.enable.icon.selection.in.the.rte" resname="label.enable.icon.selection.in.the.rte">
+        <source>Enable icon selection in the RTE</source>
+      </trans-unit>
+      <trans-unit id="label.paste.self.contained.svg.icons.with.a.viewbox.made.from.paths.and.shapes.use.currentc" resname="label.paste.self.contained.svg.icons.with.a.viewbox.made.from.paths.and.shapes.use.currentc">
+        <source>Use SVG paths and shapes with a viewBox. Use currentColor to match the text. Icons are decorative.</source>
+      </trans-unit>
+      <trans-unit id="label.add.icon" resname="label.add.icon">
+        <source>+ Add icon</source>
+      </trans-unit>
+      <trans-unit id="label.enable.font.selection.in.the.rte" resname="label.enable.font.selection.in.the.rte">
+        <source>Enable font selection in the RTE</source>
+      </trans-unit>
+      <trans-unit id="label.upload.woff2.woff.ttf.or.otf.files.up.to.10.mb.each.use.the.same.family.name.for.diff" resname="label.upload.woff2.woff.ttf.or.otf.files.up.to.10.mb.each.use.the.same.family.name.for.diff">
+        <source>WOFF2, WOFF, TTF or OTF, up to 10 MB. Use the same family name for font variants.</source>
+      </trans-unit>
+      <trans-unit id="label.default.font" resname="label.default.font">
+        <source>Default font</source>
+      </trans-unit>
+      <trans-unit id="label.font.file" resname="label.font.file">
+        <source>Font file</source>
+      </trans-unit>
+      <trans-unit id="label.weight" resname="label.weight">
+        <source>Weight</source>
+      </trans-unit>
+      <trans-unit id="label.style" resname="label.style">
+        <source>Style</source>
+      </trans-unit>
+      <trans-unit id="label.a.default.font.is.hosted.leave.the.upload.empty.to.keep.it" resname="label.a.default.font.is.hosted.leave.the.upload.empty.to.keep.it">
+        <source>Leave empty to keep the current font.</source>
+      </trans-unit>
+      <trans-unit id="label.clear.default.font.on.save" resname="label.clear.default.font.on.save">
+        <source>Clear default font on save</source>
+      </trans-unit>
+      <trans-unit id="label.add.font" resname="label.add.font">
+        <source>Add font</source>
+      </trans-unit>
+      <trans-unit id="label.enable.color.palette.in.the.rte" resname="label.enable.color.palette.in.the.rte">
+        <source>Enable color palette in the RTE</source>
+      </trans-unit>
+      <trans-unit id="label.adds.a.text.color.palette.to.the.rte.toolbar.add.your.colors.below.or.leave.the.list" resname="label.adds.a.text.color.palette.to.the.rte.toolbar.add.your.colors.below.or.leave.the.list">
+        <source>Leave the list empty to use the standard palette. Named colors are also available as CSS variables, e.g. var(--color-brand-blue).</source>
+      </trans-unit>
+      <trans-unit id="label.default.color" resname="label.default.color">
+        <source>Default color</source>
+      </trans-unit>
+      <trans-unit id="label.add.color" resname="label.add.color">
+        <source>Add color</source>
+      </trans-unit>
+      <trans-unit id="label.enable.font.sizes.in.the.rte" resname="label.enable.font.sizes.in.the.rte">
+        <source>Enable font sizes in the RTE</source>
+      </trans-unit>
+      <trans-unit id="label.set.the.default.size.or.leave.blank.to.use.existing.css.or.the.browser.default.the.ht" resname="label.set.the.default.size.or.leave.blank.to.use.existing.css.or.the.browser.default.the.ht">
+        <source>The html size sets the base for rem units. Leave blank to keep existing CSS.</source>
+      </trans-unit>
+      <trans-unit id="label.add.sizes.such.as.16.18px.1.25rem.or.120.numbers.without.a.unit.use.pixels.supported" resname="label.add.sizes.such.as.16.18px.1.25rem.or.120.numbers.without.a.unit.use.pixels.supported">
+        <source>Use CSS sizes such as 18px, 1.25rem or 120%. Numbers without a unit use pixels.</source>
+      </trans-unit>
+      <trans-unit id="label.add.size" resname="label.add.size">
+        <source>Add size</source>
+      </trans-unit>
+      <trans-unit id="label.choose.default.formatting.for.each.element.in.the.rte.and.on.the.website.default.keep" resname="label.choose.default.formatting.for.each.element.in.the.rte.and.on.the.website.default.keep">
+        <source>Set defaults for the editor and website. Default keeps existing CSS. Save new fonts, colors and sizes before selecting them here.</source>
+      </trans-unit>
+      <trans-unit id="label.additional.css" resname="label.additional.css">
+        <source>Additional CSS</source>
+      </trans-unit>
+      <trans-unit id="label.supports.declarations.and.state.blocks.such.as.hover.color.var.color.primary" resname="label.supports.declarations.and.state.blocks.such.as.hover.color.var.color.primary">
+        <source>CSS declarations and states, e.g. &amp;:hover { color: var(--color-primary); }</source>
+      </trans-unit>
+      <trans-unit id="label.overwrite.default.rte.styles.and.formats" resname="label.overwrite.default.rte.styles.and.formats">
+        <source>Overwrite default RTE styles and formats</source>
+      </trans-unit>
+      <trans-unit id="label.removes.lead.small.and.muted.sets.the.format.dropdown.to.paragraph.and.heading.1.thro" resname="label.removes.lead.small.and.muted.sets.the.format.dropdown.to.paragraph.and.heading.1.thro">
+        <source>Replaces the built-in styles. Paragraph and headings 1–6 remain available.</source>
+      </trans-unit>
+      <trans-unit id="label.add.styles.for.the.rte.style.dropdown.configure.their.formatting.below.or.keep.existi" resname="label.add.styles.for.the.rte.style.dropdown.configure.their.formatting.below.or.keep.existi">
+        <source>Add styles for the RTE style dropdown. Configure their formatting below or keep existing CSS with Default. Save new fonts, colors and sizes first to make them available here.</source>
+      </trans-unit>
+      <trans-unit id="label.select.one.or.more.elements.headings.applies.to.h1.through.h6.enter.css.classes.witho" resname="label.select.one.or.more.elements.headings.applies.to.h1.through.h6.enter.css.classes.witho">
+        <source>Choose HTML elements and CSS classes (without dots). Separate multiple classes with spaces.</source>
+      </trans-unit>
+      <trans-unit id="label.add.style" resname="label.add.style">
+        <source>Add style</source>
+      </trans-unit>
+      <trans-unit id="label.save" resname="label.save">
+        <source>Save</source>
+      </trans-unit>
+      <trans-unit id="label.icon.name" resname="label.icon.name">
+        <source>Icon name</source>
+      </trans-unit>
+      <trans-unit id="label.svg.code" resname="label.svg.code">
+        <source>SVG code</source>
+      </trans-unit>
+      <trans-unit id="label.remove.icon" resname="label.remove.icon">
+        <source>Remove icon</source>
+      </trans-unit>
+      <trans-unit id="label.style.name" resname="label.style.name">
+        <source>Style name</source>
+      </trans-unit>
+      <trans-unit id="label.html.elements" resname="label.html.elements">
+        <source>HTML elements</source>
+      </trans-unit>
+      <trans-unit id="label.choose.elements" resname="label.choose.elements">
+        <source>Choose elements</source>
+      </trans-unit>
+      <trans-unit id="label.css.class" resname="label.css.class">
+        <source>CSS class</source>
+      </trans-unit>
+      <trans-unit id="label.remove.style" resname="label.remove.style">
+        <source>Remove style</source>
+      </trans-unit>
+      <trans-unit id="label.color.name" resname="label.color.name">
+        <source>Color name</source>
+      </trans-unit>
+      <trans-unit id="label.color" resname="label.color">
+        <source>Color</source>
+      </trans-unit>
+      <trans-unit id="label.remove.color" resname="label.remove.color">
+        <source>Remove color</source>
+      </trans-unit>
+      <trans-unit id="label.font.name" resname="label.font.name">
+        <source>Font name</source>
+      </trans-unit>
+      <trans-unit id="label.replace.hosted.font.optional" resname="label.replace.hosted.font.optional">
+        <source>Replace hosted font (optional)</source>
+      </trans-unit>
+      <trans-unit id="label.remove.font" resname="label.remove.font">
+        <source>Remove font</source>
+      </trans-unit>
+      <trans-unit id="label.size.name" resname="label.size.name">
+        <source>Size name</source>
+      </trans-unit>
+      <trans-unit id="label.size" resname="label.size">
+        <source>Size</source>
+      </trans-unit>
+      <trans-unit id="label.remove.size" resname="label.remove.size">
+        <source>Remove size</source>
+      </trans-unit>
+      <trans-unit id="label.choose.default.color" resname="label.choose.default.color">
+        <source>Choose default color</source>
+      </trans-unit>
+      <trans-unit id="label.keep.existing.css" resname="label.keep.existing.css">
+        <source>Keep existing CSS</source>
+      </trans-unit>
+      <trans-unit id="label.arrow.right" resname="label.arrow.right">
+        <source>Arrow right</source>
+      </trans-unit>
+      <trans-unit id="label.highlight" resname="label.highlight">
+        <source>Highlight</source>
+      </trans-unit>
+      <trans-unit id="label.brand.blue" resname="label.brand.blue">
+        <source>Brand blue</source>
+      </trans-unit>
+      <trans-unit id="label.choose.color" resname="label.choose.color">
+        <source>Choose color</source>
+      </trans-unit>
+      <trans-unit id="label.brand.sans" resname="label.brand.sans">
+        <source>Brand Sans</source>
+      </trans-unit>
+      <trans-unit id="label.the.quick.brown.fox.jumps.over.the.lazy.dog.0123456789" resname="label.the.quick.brown.fox.jumps.over.the.lazy.dog.0123456789">
+        <source>The quick brown fox jumps over the lazy dog. 0123456789</source>
+      </trans-unit>
+      <trans-unit id="label.new.style" resname="label.new.style">
+        <source>New style</source>
+      </trans-unit>
+      <trans-unit id="label.new.icon" resname="label.new.icon">
+        <source>New icon</source>
+      </trans-unit>
+      <trans-unit id="validation.the.form.was.not.received.completely.the.uploads.may.exceed.the.server.upload.limit.s" resname="validation.the.form.was.not.received.completely.the.uploads.may.exceed.the.server.upload.limit.s">
+        <source>The form was not received completely. The uploads may exceed the server upload limit. Select smaller files and try again.</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.font.upload.data" resname="validation.invalid.font.upload.data">
+        <source>Invalid font upload data.</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.default.font" resname="validation.invalid.default.font">
+        <source>Invalid default font.</source>
+      </trans-unit>
+      <trans-unit id="label.rte.manager" resname="label.rte.manager">
+        <source>RTE Manager</source>
+      </trans-unit>
+      <trans-unit id="label.rte.preset.saved.caches.were.flushed" resname="label.rte.preset.saved.caches.were.flushed">
+        <source>RTE preset saved. Caches were flushed.</source>
+      </trans-unit>
+      <trans-unit id="label.rte.settings.not.saved" resname="label.rte.settings.not.saved">
+        <source>RTE settings not saved</source>
+      </trans-unit>
+      <trans-unit id="label.files.could.not.be.written.check.write.permissions.for.fileadmin.rte.manager.and.its" resname="label.files.could.not.be.written.check.write.permissions.for.fileadmin.rte.manager.and.its">
+        <source>Files could not be written. Check write permissions for fileadmin/rte_manager and its Configuration, fonts and styles directories.</source>
+      </trans-unit>
+      <trans-unit id="label.400.regular" resname="label.400.regular">
+        <source>400 (Regular)</source>
+      </trans-unit>
+      <trans-unit id="label.700.bold" resname="label.700.bold">
+        <source>700 (Bold)</source>
+      </trans-unit>
+      <trans-unit id="label.variable.100.900" resname="label.variable.100.900">
+        <source>Variable (100–900)</source>
+      </trans-unit>
+      <trans-unit id="label.normal" resname="label.normal">
+        <source>Normal</source>
+      </trans-unit>
+      <trans-unit id="label.italic" resname="label.italic">
+        <source>Italic</source>
+      </trans-unit>
+      <trans-unit id="validation.use.declarations.and.hover.style.blocks.without.imports.or.urls" resname="validation.use.declarations.and.hover.style.blocks.without.imports.or.urls">
+        <source>Use declarations and &amp;:hover-style blocks, without imports or URLs.</source>
+      </trans-unit>
+      <trans-unit id="validation.nested.selectors.must.start.with.for.example.hover" resname="validation.nested.selectors.must.start.with.for.example.hover">
+        <source>Nested selectors must start with &amp;, for example &amp;:hover.</source>
+      </trans-unit>
+      <trans-unit id="validation.use.state.selectors.such.as.hover.focus.visible.or.before" resname="validation.use.state.selectors.such.as.hover.focus.visible.or.before">
+        <source>Use state selectors such as &amp;:hover, &amp;:focus-visible or &amp;::before.</source>
+      </trans-unit>
+      <trans-unit id="validation.close.each.css.state.block.with" resname="validation.close.each.css.state.block.with">
+        <source>Close each CSS state block with }.</source>
+      </trans-unit>
+      <trans-unit id="validation.use.css.declarations.such.as.line.height.1.4.and.one.level.of.hover.style.blocks" resname="validation.use.css.declarations.such.as.line.height.1.4.and.one.level.of.hover.style.blocks">
+        <source>Use CSS declarations such as line-height: 1.4; and one level of &amp;:hover-style blocks.</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.element.defaults" resname="validation.invalid.element.defaults">
+        <source>Invalid element defaults.</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.default.selection" resname="validation.invalid.default.selection">
+        <source>Invalid default selection.</source>
+      </trans-unit>
+      <trans-unit id="validation.1.s.select.a.valid.2.s" resname="validation.1.s.select.a.valid.2.s">
+        <source>%1$s: select a valid %2$s.</source>
+      </trans-unit>
+      <trans-unit id="validation.1.s.enter.a.valid.2.s.or.leave.blank" resname="validation.1.s.enter.a.valid.2.s.or.leave.blank">
+        <source>%1$s: enter a valid %2$s, or leave blank.</source>
+      </trans-unit>
+      <trans-unit id="validation.enter.css.declarations.of.at.most.8000.characters" resname="validation.enter.css.declarations.of.at.most.8000.characters">
+        <source>Enter CSS declarations of at most 8000 characters.</source>
+      </trans-unit>
+      <trans-unit id="validation.default.for.1.s.select.an.existing.2.s.or.default.save.new.entries.before.selecting.t" resname="validation.default.for.1.s.select.an.existing.2.s.or.default.save.new.entries.before.selecting.t">
+        <source>Default for %1$s: select an existing %2$s, or Default. Save new entries before selecting them.</source>
+      </trans-unit>
+      <trans-unit id="label.default" resname="label.default">
+        <source>Default</source>
+      </trans-unit>
+      <trans-unit id="field.font" resname="field.font">
+        <source>Font name</source>
+      </trans-unit>
+      <trans-unit id="field.color" resname="field.color">
+        <source>Color name</source>
+      </trans-unit>
+      <trans-unit id="field.size" resname="field.size">
+        <source>Size name</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.default.font.sizes" resname="validation.invalid.default.font.sizes">
+        <source>Invalid default font sizes.</source>
+      </trans-unit>
+      <trans-unit id="validation.1.s.enter.a.positive.css.size.such.as.16px.or.1.25rem.or.leave.blank" resname="validation.1.s.enter.a.positive.css.size.such.as.16px.or.1.25rem.or.leave.blank">
+        <source>%1$s: enter a positive CSS size such as 16px or 1.25rem, or leave blank.</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.font.size.row" resname="validation.invalid.font.size.row">
+        <source>Invalid font size row.</source>
+      </trans-unit>
+      <trans-unit id="validation.enter.a.font.size.for.each.named.class" resname="validation.enter.a.font.size.for.each.named.class">
+        <source>Enter a font size for each named class.</source>
+      </trans-unit>
+      <trans-unit id="validation.size.1.s.enter.a.positive.number.or.css.size.such.as.16.18px.1.25rem.or.120" resname="validation.size.1.s.enter.a.positive.number.or.css.size.such.as.16.18px.1.25rem.or.120">
+        <source>Size %1$s: enter a positive number or CSS size such as 16, 18px, 1.25rem or 120%%.</source>
+      </trans-unit>
+      <trans-unit id="validation.size.1.s.2.s.is.already.in.the.list" resname="validation.size.1.s.2.s.is.already.in.the.list">
+        <source>Size %1$s: %2$s is already in the list.</source>
+      </trans-unit>
+      <trans-unit id="validation.use.a.unique.size.class.name.with.letters.numbers.hyphens.or.underscores.without.font" resname="validation.use.a.unique.size.class.name.with.letters.numbers.hyphens.or.underscores.without.font">
+        <source>Use a unique size class name with letters, numbers, hyphens or underscores (without font-size-).</source>
+      </trans-unit>
+      <trans-unit id="validation.font.and.color.names.must.contain.letters.or.numbers.to.create.a.css.class" resname="validation.font.and.color.names.must.contain.letters.or.numbers.to.create.a.css.class">
+        <source>Font and color names must contain letters or numbers to create a CSS class.</source>
+      </trans-unit>
+      <trans-unit id="validation.use.unique.color.names.and.color.values.each.color.needs.its.own.css.class" resname="validation.use.unique.color.names.and.color.values.each.color.needs.its.own.css.class">
+        <source>Use unique color names and color values; each color needs its own CSS class.</source>
+      </trans-unit>
+      <trans-unit id="validation.font.family.names.must.produce.different.css.classes" resname="validation.font.family.names.must.produce.different.css.classes">
+        <source>Font family names must produce different CSS classes.</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.font.row" resname="validation.invalid.font.row">
+        <source>Invalid font row.</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.font.field" resname="validation.invalid.font.field">
+        <source>Invalid font field.</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.font.upload" resname="validation.invalid.font.upload">
+        <source>Invalid font upload.</source>
+      </trans-unit>
+      <trans-unit id="validation.enter.a.font.family.name.starting.with.a.letter.using.letters.numbers.spaces.hyphens" resname="validation.enter.a.font.family.name.starting.with.a.letter.using.letters.numbers.spaces.hyphens">
+        <source>Enter a font family name starting with a letter, using letters, numbers, spaces, hyphens or underscores (up to 80 characters).</source>
+      </trans-unit>
+      <trans-unit id="validation.select.a.supported.font.weight.and.style" resname="validation.select.a.supported.font.weight.and.style">
+        <source>Select a supported font weight and style.</source>
+      </trans-unit>
+      <trans-unit id="validation.each.font.family.weight.and.style.combination.must.be.unique" resname="validation.each.font.family.weight.and.style.combination.must.be.unique">
+        <source>Each font family, weight and style combination must be unique.</source>
+      </trans-unit>
+      <trans-unit id="validation.font.upload.failed.check.the.file.size.and.try.selecting.the.file.again" resname="validation.font.upload.failed.check.the.file.size.and.try.selecting.the.file.again">
+        <source>Font upload failed. Check the file size and try selecting the file again.</source>
+      </trans-unit>
+      <trans-unit id="validation.upload.a.woff2.woff.ttf.or.otf.font.of.at.most.10.mb" resname="validation.upload.a.woff2.woff.ttf.or.otf.font.of.at.most.10.mb">
+        <source>Upload a WOFF2, WOFF, TTF or OTF font of at most 10 MB.</source>
+      </trans-unit>
+      <trans-unit id="validation.the.uploaded.file.does.not.have.a.valid.font.header.or.exceeds.10.mb" resname="validation.the.uploaded.file.does.not.have.a.valid.font.header.or.exceeds.10.mb">
+        <source>The uploaded file does not have a valid font header or exceeds 10 MB.</source>
+      </trans-unit>
+      <trans-unit id="validation.choose.a.local.font.file.for.every.new.font.row" resname="validation.choose.a.local.font.file.for.every.new.font.row">
+        <source>Choose a local font file for every new font row.</source>
+      </trans-unit>
+      <trans-unit id="validation.use.an.svg.of.at.most.50.kb.without.a.document.type" resname="validation.use.an.svg.of.at.most.50.kb.without.a.document.type">
+        <source>Use an SVG of at most 50 KB without a document type.</source>
+      </trans-unit>
+      <trans-unit id="validation.paste.a.complete.svg.starting.with.svg" resname="validation.paste.a.complete.svg.starting.with.svg">
+        <source>Paste a complete SVG, starting with &lt;svg&gt;.</source>
+      </trans-unit>
+      <trans-unit id="validation.use.a.self.contained.svg.made.from.paths.and.shapes.convert.text.references.and.effec" resname="validation.use.a.self.contained.svg.made.from.paths.and.shapes.convert.text.references.and.effec">
+        <source>Use a self-contained SVG made from paths and shapes; convert text, references and effects to paths first.</source>
+      </trans-unit>
+      <trans-unit id="validation.svg.icons.need.a.viewbox.attribute.so.they.scale.with.text" resname="validation.svg.icons.need.a.viewbox.attribute.so.they.scale.with.text">
+        <source>SVG icons need a viewBox attribute so they scale with text.</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.icons" resname="validation.invalid.icons">
+        <source>Invalid icons.</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.icon.row" resname="validation.invalid.icon.row">
+        <source>Invalid icon row.</source>
+      </trans-unit>
+      <trans-unit id="validation.enter.an.icon.name.of.up.to.120.characters.without.percent.signs" resname="validation.enter.an.icon.name.of.up.to.120.characters.without.percent.signs">
+        <source>Enter an icon name of up to 120 characters without percent signs.</source>
+      </trans-unit>
+      <trans-unit id="validation.use.unique.icon.names" resname="validation.use.unique.icon.names">
+        <source>Use unique icon names.</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.rte.styles" resname="validation.invalid.rte.styles">
+        <source>Invalid RTE styles.</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.rte.style.row" resname="validation.invalid.rte.style.row">
+        <source>Invalid RTE style row.</source>
+      </trans-unit>
+      <trans-unit id="validation.select.supported.html.elements" resname="validation.select.supported.html.elements">
+        <source>Select supported HTML elements.</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.rte.style.field" resname="validation.invalid.rte.style.field">
+        <source>Invalid RTE style field.</source>
+      </trans-unit>
+      <trans-unit id="validation.rte.style.1.s.enter.a.display.name.elements.and.css.class" resname="validation.rte.style.1.s.enter.a.display.name.elements.and.css.class">
+        <source>RTE style %1$s: enter a display name, elements and CSS class.</source>
+      </trans-unit>
+      <trans-unit id="validation.rte.style.1.s.use.a.name.of.at.most.120.characters.without.percent.signs" resname="validation.rte.style.1.s.use.a.name.of.at.most.120.characters.without.percent.signs">
+        <source>RTE style %1$s: use a name of at most 120 characters without percent signs.</source>
+      </trans-unit>
+      <trans-unit id="validation.rte.style.1.s.use.a.unique.display.name" resname="validation.rte.style.1.s.use.a.unique.display.name">
+        <source>RTE style %1$s: use a unique display name.</source>
+      </trans-unit>
+      <trans-unit id="validation.rte.style.1.s.enter.supported.html.elements.for.example.p.h2.span" resname="validation.rte.style.1.s.enter.supported.html.elements.for.example.p.h2.span">
+        <source>RTE style %1$s: enter supported HTML elements, for example p, h2, span.</source>
+      </trans-unit>
+      <trans-unit id="validation.rte.style.1.s.enter.css.class.names.without.dots.separated.by.spaces" resname="validation.rte.style.1.s.enter.css.class.names.without.dots.separated.by.spaces">
+        <source>RTE style %1$s: enter CSS class names without dots, separated by spaces.</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.rte.colors" resname="validation.invalid.rte.colors">
+        <source>Invalid RTE colors.</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.rte.color.row" resname="validation.invalid.rte.color.row">
+        <source>Invalid RTE color row.</source>
+      </trans-unit>
+      <trans-unit id="validation.color.1.s.enter.a.name.of.at.most.120.characters.without.percent.signs" resname="validation.color.1.s.enter.a.name.of.at.most.120.characters.without.percent.signs">
+        <source>Color %1$s: enter a name of at most 120 characters without percent signs.</source>
+      </trans-unit>
+      <trans-unit id="validation.color.1.s.enter.a.hex.color.such.as.336699" resname="validation.color.1.s.enter.a.hex.color.such.as.336699">
+        <source>Color %1$s: enter a hex color such as #336699.</source>
+      </trans-unit>
+      <trans-unit id="validation.invalid.rte.font.sizes" resname="validation.invalid.rte.font.sizes">
+        <source>Invalid RTE font sizes.</source>
+      </trans-unit>
+      <trans-unit id="validation.default.color.enter.a.hex.color.or.leave.blank" resname="validation.default.color.enter.a.hex.color.or.leave.blank">
+        <source>Default color: enter a hex color or leave blank.</source>
+      </trans-unit>
+      <trans-unit id="label.headings.1.6" resname="label.headings.1.6">
+        <source>Headings 1–6</source>
+      </trans-unit>
+      <trans-unit id="module.theme" resname="module.theme">
+        <source>Theme</source>
+      </trans-unit>
+      <trans-unit id="module.theme.settings.and.management.modules" resname="module.theme.settings.and.management.modules">
+        <source>Theme settings and management modules</source>
+      </trans-unit>
+      <trans-unit id="module.rte.manager" resname="module.rte.manager">
+        <source>RTE Manager</source>
+      </trans-unit>
+      <trans-unit id="module.manage.rte.styles.and.formats" resname="module.manage.rte.styles.and.formats">
+        <source>Manage RTE styles and formats</source>
+      </trans-unit>
+      <trans-unit id="module.manage.the.default.rte.preset.custom.styles.and.heading.formats" resname="module.manage.the.default.rte.preset.custom.styles.and.heading.formats">
+        <source>Manage the default RTE preset, custom styles and heading formats.</source>
+      </trans-unit>
+      <trans-unit id="js.rteManager.inline.icon" resname="js.rteManager.inline.icon">
+        <source>Inline icon</source>
+      </trans-unit>
+      <trans-unit id="js.rteManager.insert.icon" resname="js.rteManager.insert.icon">
+        <source>Insert icon</source>
+      </trans-unit>
+      <trans-unit id="js.rteManager.new.icon" resname="js.rteManager.new.icon">
+        <source>New icon</source>
+      </trans-unit>
+      <trans-unit id="js.rteManager.live.preview" resname="js.rteManager.live.preview">
+        <source>Preview</source>
+      </trans-unit>
+      <trans-unit id="js.rteManager.choose.a.font.file.to.preview.it" resname="js.rteManager.choose.a.font.file.to.preview.it">
+        <source>Choose a font file to preview it.</source>
+      </trans-unit>
+      <trans-unit id="js.rteManager.font.could.not.be.loaded" resname="js.rteManager.font.could.not.be.loaded">
+        <source>Font could not be loaded.</source>
+      </trans-unit>
+      <trans-unit id="js.rteManager.loading.font" resname="js.rteManager.loading.font">
+        <source>Loading font…</source>
+      </trans-unit>
+      <trans-unit id="js.rteManager.preview" resname="js.rteManager.preview">
+        <source>Preview</source>
+      </trans-unit>
+      <trans-unit id="js.rteManager.paste.a.valid.svg.to.preview.it" resname="js.rteManager.paste.a.valid.svg.to.preview.it">
+        <source>Paste a valid SVG to preview it.</source>
+      </trans-unit>
+      <trans-unit id="js.rteManager.choose.elements" resname="js.rteManager.choose.elements">
+        <source>Choose elements</source>
+      </trans-unit>
+      <trans-unit id="js.rteManager.new.style" resname="js.rteManager.new.style">
+        <source>New style</source>
+      </trans-unit>
+      <trans-unit id="label.default.html" resname="label.default.html">
+        <source>Default (html)</source>
+      </trans-unit>
+      <trans-unit id="label.new.color" resname="label.new.color"><source>New color</source></trans-unit>
+      <trans-unit id="label.new.font" resname="label.new.font"><source>New font</source></trans-unit>
+      <trans-unit id="label.new.size" resname="label.new.size"><source>New size</source></trans-unit>
+      <trans-unit id="js.rteManager.new.color" resname="js.rteManager.new.color"><source>New color</source></trans-unit>
+      <trans-unit id="js.rteManager.new.font" resname="js.rteManager.new.font"><source>New font</source></trans-unit>
+      <trans-unit id="js.rteManager.new.size" resname="js.rteManager.new.size"><source>New size</source></trans-unit>
+      <trans-unit id="label.element.paragraph" resname="label.element.paragraph">
+        <source>Paragraph (p)</source>
+      </trans-unit>
+      <trans-unit id="label.element.link" resname="label.element.link">
+        <source>Link (a)</source>
+      </trans-unit>
+      <trans-unit id="label.element.inline" resname="label.element.inline">
+        <source>Inline text (span)</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

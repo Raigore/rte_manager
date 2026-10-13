@@ -1,0 +1,33 @@
+{
+  "name": "kst3/rte-manager",
+  "description": "RTE Manager - Manage RTE styles, fonts, colors, sizes, icons and presets.",
+  "type": "typo3-cms-extension",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Konstantin Stolzenburg",
+      "email": "konstantin.stolzenburg@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "keywords": ["typo3", "rte", "ckeditor", "styles", "fonts"],
+  "autoload": {
+    "psr-4": { "Kst3\\RteManager\\": "Classes/" }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "rte_manager",
+      "version": "1.0.0",
+      "Package": { "providesPackages": {} }
+    }
+  },
+  "require": {
+    "php": "^8.2",
+    "typo3/cms-backend": "^14.3",
+    "typo3/cms-core": "^14.3",
+    "typo3/cms-fluid": "^14.3",
+    "typo3/cms-rte-ckeditor": "^14.3",
+    "symfony/filesystem": "^7.4 || ^8.0",
+    "symfony/yaml": "^7.4 || ^8.0"
+  }
+}

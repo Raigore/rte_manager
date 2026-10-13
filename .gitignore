@@ -1,0 +1,8 @@
+/Configuration/RTE/Generated.yaml
+/vendor/
+/node_modules/
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
