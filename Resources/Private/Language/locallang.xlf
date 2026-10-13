@@ -473,6 +473,12 @@
       <trans-unit id="label.element.inline" resname="label.element.inline">
         <source>Inline text (span)</source>
       </trans-unit>
+      <trans-unit id="label.preset.unavailable" resname="label.preset.unavailable">
+        <source>The managed preset could not be loaded. TYPO3 uses its default RTE preset. Check fileadmin/rte_manager/Configuration/Generated.yaml and directory permissions, or restore a backup. Saving is blocked until the preset can be loaded; existing files have not been replaced.</source>
+      </trans-unit>
+      <trans-unit id="label.preset.rollback.failed" resname="label.preset.rollback.failed">
+        <source>Saving failed and the previous files could not be fully restored. Check filesystem permissions and restore Generated.yaml, fonts/fonts.css and styles/classes.css together from backup.</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>

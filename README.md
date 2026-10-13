@@ -1,137 +1,234 @@
-# RTE Manager
+﻿# RTE Manager
 
-Open **Theme > RTE Manager** to add styles with a display name,
-HTML elements and CSS classes. Choose one or more elements from the dropdown and use spaces between
-classes (without dots). Multiple elements produce separate named dropdown entries.
-Empty rows are ignored; incomplete or invalid rows prevent saving.
+Manage TYPO3's default rich-text editor preset through **Theme > RTE Manager**.
+Configure fonts, colors, named sizes, SVG icons, custom styles and element
+defaults, with live previews before saving.
 
-Each font, color, size, icon, style and element default has a live preview. Click
-the preview text to edit it directly; each preview keeps its own sample while
-you adjust settings. Preview text is not saved. Draft changes and selected font
-files appear before saving; hover or focus a sample to inspect CSS states.
-Previews are isolated from the backend and use the manager's settings, without
-loading frontend theme CSS. Saving is still required to update the RTE.
+Composer package: `kst3/rte-manager` | Extension key: `rte_manager`
 
-Fonts, colors, sizes, icons and styles use collapsible entries. Their summaries
-show names and key values; new entries open automatically.
+## Requirements and installation
 
-The overwrite switch defaults to off: custom styles are appended to Lead, Small
-and Muted, and the standard format choices remain. When enabled, only custom
-styles appear and the format dropdown offers Paragraph and Heading 1 through Heading 6. Choose Paragraph to convert a heading back to normal text.
+- TYPO3 **14.3.x–14.x**, with Backend, Fluid and RTE CKEditor installed.
+- PHP **8.2 or newer within PHP 8**, subject to the requirements of your TYPO3
+  installation and resolved dependencies.
+- Write access for the PHP process to `fileadmin/rte_manager` beneath the public
+  document root, including `Configuration`, `fonts` and `styles`.
 
-Saving writes `public/fileadmin/rte_manager/Configuration/Generated.yaml` atomically and flushes caches. This file contains all backend settings and the generated RTE preset. Existing extension-local settings are copied once when the external file is missing; extension updates never overwrite an existing external preset. Back up and preserve the entire `public/fileadmin/rte_manager` directory, including `Configuration`, `fonts` and `styles`, during deployments.
+For Composer installations, once the package is published:
 
-Generated CSS uses fixed filenames: `styles/classes.css` and `fonts/fonts.css`. Saving overwrites these files instead of accumulating versions. Uploaded font binaries retain their individual filenames.
+```sh
+composer require kst3/rte-manager:^1.0
+vendor/bin/typo3 extension:setup
+vendor/bin/typo3 cache:flush
+```
 
-The Icons tab stores named, sanitized SVGs in the same external preset. Enable icon selection to show the Insert icon picker in the RTE. Paste SVG code with a viewBox, using paths, groups and basic shapes; use currentColor to inherit text color. Icons are decorative inline objects with real SVG markup in the content. Removing an entry from the picker does not remove icons already inserted. Text, external references, gradients and effects should be converted to simple paths before importing.
-The web server must have write access to that directory. This file is the source
-of the RTE form values as well as the generated preset; preserve it on deployment.
-The extension registers it as the `default` preset. Separately selected presets
-are unaffected. Stylesheet rules themselves must be supplied separately for the
-frontend and editor. Reopen an existing content editor after saving settings.
+For Classic mode, install and activate `rte_manager` through TYPO3's Extension
+Manager after the TER release is available, then flush caches. Open
+**Theme > RTE Manager**, configure the desired features and save. Reopen any
+content editor that was already open to load the updated preset.
 
+New installations start with TYPO3's default RTE configuration. No site-specific
+settings, fonts or icon collections ship with the extension.
 
-## Translations
+## Scope and permissions
 
-English interface strings live in `Resources/Private/Language/locallang.xlf`
-(XLIFF 1.2). Module labels, Fluid templates, validation messages and JavaScript
-use these labels. User-defined names, CSS values and uploaded content are not
-translated. Keep existing translation IDs stable when changing English wording.
-Numbered placeholders such as `%1$s` must be preserved in translations; `%%`
-represents a literal percent sign in formatted validation messages.
+The extension replaces the **default** RTE preset for the whole TYPO3
+installation. All sites using that preset share the same settings; there is no
+per-site configuration. Explicitly selected alternative RTE presets keep their
+own editor configuration.
 
-Validate the catalogue and translation fallback with:
+Generated CSS is automatically included in frontend pages through
+`page.includeCSS.rte_manager_fonts` and `page.includeCSS.rte_manager_classes`.
+Default font/color settings generate `body` rules, the root font size targets
+`html`, and element defaults target paragraphs, headings and links. These rules
+can affect the whole page, including content outside rich-text fields, and some
+use `!important`. An alternative editor preset does not isolate its frontend
+content from this CSS. Review the resulting frontend styling on every site.
 
-    ddev exec php packages/rte_manager/Tests/Functional/LocalizationSmoke.php
+Administrators can access the module. Non-admin users can be granted module
+access through their backend permissions; doing so allows them to change the
+shared preset, upload fonts and flush TYPO3 caches when saving. Grant this access
+only to users who should manage installation-wide presentation settings.
 
-## Editor settings
+## Using the module
 
-The tabs are Fonts, Colors, Sizes and Custom Styles. The overwrite
-switch is in Custom Styles.
+The tabs are **Fonts**, **Colors**, **Sizes**, **Icons**, **Styles** and **Defaults**.
+Fonts, colors, sizes, icons and styles use collapsible entries. New entries open
+automatically; summaries show their names and key values.
 
-In Sizes, enable the font-size toolbar button and add one value per row, such as
-16, 18px, 1.25rem or 120%. Bare numbers are pixels. Positive decimal values with
-px, rem, em, %, pt, vw, vh, vmin, vmax, ch and ex are supported. Blank rows are
-ignored and duplicate sizes are rejected. The editor always offers Default to
-reset the font size. Turning the toggle off keeps the saved list and supports
-existing formatted content. Sizes use generated CSS classes such as size-16px,
-size-1-25rem and size-120percent, loaded in both the editor and frontend.
+Each entry and element default has a live preview. Click preview text to change
+the sample; hover or focus it to inspect CSS states. Samples are not saved.
+Previews use the manager's settings and selected uploads, without loading your
+frontend theme CSS. Saving is required to update the actual RTE and frontend.
 
-In Fonts, enable the font selector and add a family name with a WOFF2, WOFF,
-TTF or OTF upload (maximum 10 MB per file, also subject to PHP upload limits).
-Choose the matching weight and normal/italic style. Use the same family name
-for variants; variable fonts can use the 100–900 weight range. The RTE offers
-each family once, plus Default to reset the font.
+### Fonts
 
-Font files are stored in public/fileadmin/rte_manager/fonts under generated
-filenames. Generated CSS loads them in both the editor and frontend. Keep this
-directory and the preset YAML when deploying or backing up the site. The web
-server needs write access to the directory. Disabling the selector keeps font
-definitions loaded for existing content. Removing a font row removes it from
-the generated definitions but does not physically delete the uploaded file.
-After saving, reopen the editor. If validation fails, select new upload files
-again before retrying.
+Enable the font selector and add a family name with a WOFF2, WOFF, TTF or OTF
+upload. The maximum is **10 MB per file**, also subject to PHP upload limits.
+Choose the matching weight and normal/italic style. Variants share a family name;
+variable fonts can use the `100 900` weight range. Each family appears once in
+the RTE, alongside **Default** to reset the selection.
 
-In Colors, enable the text-color palette and add rows with a color name and hex
-value (or use the color picker). Three- and six-digit hex values are accepted.
-Saving adds the FontColor plugin, toolbar button and palette to the RTE preset.
-An empty list uses CKEditor's standard colors. Disabling the palette hides the
-feature while retaining the saved list. Reopen the editor after saving.
+The separate default-font upload sets the base font. Font binaries are stored
+under generated filenames in `fileadmin/rte_manager/fonts`. Disabling the selector
+retains font definitions for existing content. Removing a row removes its CSS
+definition but does not delete its uploaded file. If validation fails, select
+new upload files again before retrying.
 
-Fonts and colors are saved as CSS classes on spans, for example
-`<span class="color-feature-blue font-examplefont">Text</span>`.
-Names are lowercased and spaces/punctuation become hyphens. The extension
-generates the corresponding CSS for both the RTE and frontend under
-public/fileadmin/rte_manager/styles. Preserve this directory when deploying.
-Use unique color names and values; names that produce the same CSS class are
-rejected. Font variants share their family's class.
+### Colors
 
-The RTE color picker and document-color suggestions are disabled so new color
-selections always have a named class. The color picker in RTE Manager remains
-available for defining colors. Existing inline formatting matching a configured
-font or color becomes classes when the content is opened and saved; database
-records are not bulk-rewritten. Unrecognized pasted or legacy formatting is
-preserved. Renaming/removing a font or color does not rename classes in previously
-saved content.
+Enable the text-color palette and add unique names and three- or six-digit hex
+values, such as `Brand Blue` and `#336699`. An empty palette uses CKEditor's
+standard colors. Disabling the selector keeps saved definitions. The separate
+default color controls the base text color; leave it blank to retain existing CSS.
 
-Composer package: kst3/rte-manager; TYPO3 extension key: rte_manager.
-This extension owns its controller, templates, JavaScript, preset registration,
-YAML persistence and tests. It does not read or write the host's general settings.
+Fonts and colors become classes, for example
+`<span class="color-brand-blue font-examplefont">Text</span>`. Names are lowercased
+and spaces/punctuation become hyphens. Names that produce duplicate classes are
+rejected. Font variants share the family's class.
 
-The extension owns the Theme group (`rte_manager_theme`) and works independently.
-Other extensions can register submodules under that group.
-New installations start with TYPO3's default RTE preset; no site-specific settings,
-font binaries or icon collections are distributed with this package.
+The RTE's free color picker and document-color suggestions are disabled so new
+selections use named classes. The color picker inside RTE Manager remains
+available for defining colors.
+
+### Sizes
+
+Enable the font-size selector and add values such as `16`, `18px`, `1.25rem` or
+`120%`. Bare numbers mean pixels. Positive decimal values with `px`, `rem`, `em`,
+`%`, `pt`, `vw`, `vh`, `vmin`, `vmax`, `ch` and `ex` are supported.
+
+Use an optional unique class name without the `font-size-` prefix: a size named
+`large` generates `font-size-large`. Without a name, `18px` generates
+`font-size-18px`. Previously saved `size-*` classes remain supported. Blank rows
+are ignored and duplicate sizes or names are rejected. **Default** resets the
+selection. Disabling the selector keeps definitions for existing content.
+
+The separate **Default (html)** size sets the root size and affects `rem`-based
+layout on the frontend. Leave it blank to retain the site's existing root size.
+
+### Icons
+
+Enable icon selection to add the **Insert icon** picker. Add named SVGs with a
+`viewBox`, using paths, groups and basic shapes. SVG input is limited to 50 KB and
+sanitized. Use `currentColor` to inherit text color. Convert text, external
+references, gradients and effects to simple paths before importing.
+
+Icons are decorative inline objects containing SVG markup. Removing an icon from
+the picker does not remove copies already inserted into content.
+
+### Styles and defaults
+
+In **Styles**, supply a display name, HTML elements and CSS classes separated by
+spaces, without dots. Multiple elements create separate named dropdown entries.
+Blank rows are ignored; incomplete or invalid rows prevent saving. Select named
+fonts, colors and sizes or add CSS declarations and state blocks such as
+`&:hover { text-decoration: underline; }`. Imports and URLs are not allowed in
+these CSS fields. Rules defined here are generated for both editor and frontend;
+other theme-specific class rules must be supplied by your site.
+
+The overwrite switch defaults to off: custom styles are appended to **Lead**,
+**Small** and **Muted**, and the standard format choices remain. When enabled,
+only custom styles appear, and the format dropdown offers **Paragraph** and
+**Heading 1** through **Heading 6**. Select Paragraph to reset a heading.
+
+In **Defaults**, configure fonts, colors, sizes and additional CSS for paragraphs,
+headings and links. Save newly added named entries before selecting them as
+defaults. Leave values blank to retain existing styling.
+
+Existing inline formatting matching a configured font or color becomes classes
+when content is opened and saved; database records are not bulk-rewritten.
+Unrecognized pasted or legacy formatting is preserved. Renaming/removing a named
+entry does not rename classes in previously saved content.
+
+## Storage, saving and recovery
+
+Paths below are relative to TYPO3's public document root, commonly `public/`:
+
+| Path under `fileadmin/rte_manager/` | Purpose |
+| --- | --- |
+| `Configuration/Generated.yaml` | Saved form settings and generated RTE preset |
+| `Configuration/Generated.yaml.lock` | Coordinates concurrent saves; do not delete during a save |
+| `fonts/` | Uploaded font files and generated `fonts.css` |
+| `styles/classes.css` | Generated formatting and default rules |
+
+Saving generates all file contents before publishing, locks concurrent saves,
+replaces CSS files and publishes YAML last. If a write fails, files already
+replaced are restored to their previous contents; newly created files in that
+save are removed. Successful saves flush TYPO3 caches. Uploaded font binaries
+may remain after a failed save; they are not automatically deleted. Generated
+CSS filenames stay fixed rather than accumulating versions.
+
+This rollback handles ordinary write failures. It is not a crash-proof filesystem
+transaction: a process interruption or a filesystem that also rejects rollback
+can still require recovery. The module explicitly reports a rollback failure.
+
+If the managed preset cannot be created or loaded, TYPO3 starts with its core RTE
+preset. The manager displays an error and blocks saving while the load problem
+persists, preserving the existing preset rather than replacing it with empty
+settings. Check the YAML and directory permissions, or restore a known-good
+backup. Then flush TYPO3 caches and reopen the manager and content editor.
+
+Back up the database and the **entire `fileadmin/rte_manager` directory**. Preserve
+this directory across deployments and extension updates. For recovery after an
+incomplete save, restore `Generated.yaml`, `fonts/fonts.css` and
+`styles/classes.css` from the same backup, together with any required font files.
+Do not include site-generated files in an extension release archive.
 
 ## Upgrading from the development extension
 
 Version 1.0.0 uses `rte_manager`, `kst3/rte-manager` and `Kst3\RteManager`.
 Replace the old Composer requirement and remove the old extension package before
-installing this one. On first boot, existing `fileadmin/rte_management` settings,
-fonts and styles are copied to `fileadmin/rte_manager`. The old directory is kept
-for rollback; an existing new preset is never overwritten. Back up both the
-database and fileadmin before upgrading. Update explicit old preset paths in
-site configuration, module bookmarks and non-admin backend group permissions.
+installing this one. On first initialization, existing `fileadmin/rte_management`
+settings, fonts and styles are copied to `fileadmin/rte_manager`. The old directory
+is kept for rollback; an existing new preset is never overwritten. An older
+extension-local `Configuration/RTE/Generated.yaml` is also recognized when no
+external preset exists.
+
+Back up the database and fileadmin before upgrading. Update explicit old preset
+paths in site configuration, module bookmarks and non-admin group permissions.
 Previously saved content CSS classes stay unchanged.
+
+## Support and release history
+
+Contact [Konstantin Stolzenburg](mailto:konstantin.stolzenburg@gmail.com) with the
+extension, TYPO3 and PHP versions, steps to reproduce, and relevant error output.
+Remove private content and credentials from reports. A public source repository
+and issue tracker are not currently listed in the package metadata.
+
+See [CHANGELOG.md](CHANGELOG.md) for release notes.
+
+## Development and translations
+
+English interface strings live in `Resources/Private/Language/locallang.xlf`
+(XLIFF 1.2). Module labels, templates, validation messages and JavaScript use these
+labels. User-defined content is not translated. Preserve translation IDs and
+numbered placeholders such as `%1$s`; `%%` represents a literal percent sign in
+formatted validation messages.
+
+The source checkout includes smoke tests; release archives can exclude `Tests/`.
+From a development project with the extension at `packages/rte_manager`, run:
+
+```sh
+ddev exec php packages/rte_manager/Tests/Functional/ReleaseMetadataSmoke.php
+ddev exec php packages/rte_manager/Tests/Functional/RteSettingsSmoke.php
+ddev exec php packages/rte_manager/Tests/Functional/PresetPersistenceSmoke.php
+ddev exec php packages/rte_manager/Tests/Functional/LocalizationSmoke.php
+```
+
+Editor HTML round-trip checks use the installed CKEditor modules and jsdom:
+
+```sh
+ddev exec npm install --prefix /tmp/rte-class-tests jsdom --no-save --no-audit --no-fund
+ddev exec env NODE_PATH=/tmp/rte-class-tests/node_modules node packages/rte_manager/Tests/Functional/FormattingClassesSmoke.mjs
+```
 
 ## License and uploaded assets
 
-This extension is licensed under GPL-2.0-or-later; see [LICENSE.txt](LICENSE.txt).
-TYPO3, CKEditor and Symfony are supplied by the TYPO3 installation and retain
-their respective licenses. This package imports their APIs rather than bundling
-copies of those libraries.
+Licensed under **GPL-2.0-or-later**; see [LICENSE.txt](LICENSE.txt). TYPO3, CKEditor
+and Symfony are supplied by the TYPO3 installation and retain their respective
+licenses; this package imports their APIs rather than bundling them.
 
-Only upload fonts and SVG icons for which you have the necessary web embedding
-and usage rights. A desktop font license may not permit web hosting. Uploading
-an asset does not change its license. Keep any required attribution and license
-notices with your site. Do not include your site's `fileadmin` directory in the
-extension release.
-
-Run the integration checks from the project root:
-
-    ddev exec php packages/rte_manager/Tests/Functional/RteSettingsSmoke.php
-
-Editor HTML round-trip checks use the installed CKEditor modules and an isolated DOM:
-
-    ddev exec npm install --prefix /tmp/rte-class-tests jsdom --no-save --no-audit --no-fund
-    ddev exec env NODE_PATH=/tmp/rte-class-tests/node_modules node packages/rte_manager/Tests/Functional/FormattingClassesSmoke.mjs
+Only upload fonts and SVGs for which you have the necessary web embedding and
+usage rights. A desktop font license may not permit web hosting. Uploading an
+asset does not change its license. Keep required attribution and license notices
+with your site.

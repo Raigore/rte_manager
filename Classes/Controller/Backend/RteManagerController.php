@@ -42,8 +42,12 @@ final readonly class RteManagerController
         $view->setTitle(\Kst3\RteManager\Service\Localization::translate('label.rte.manager', 'RTE Manager'));
         $view->makeDocHeaderModuleMenu();
         $settings = $this->rteSettings->getAll();
+        $loadFailed = RteSettings::loadError() !== null;
+        if ($loadFailed) {
+            $view->addFlashMessage(\Kst3\RteManager\Service\Localization::translate('label.preset.unavailable', 'The managed preset could not be loaded. TYPO3 uses its default RTE preset. Check fileadmin/rte_manager/Configuration/Generated.yaml and directory permissions, or restore a backup. Saving is blocked until the preset can be loaded; existing files have not been replaced.'), '', ContextualFeedbackSeverity::ERROR);
+        }
 
-        if ($request->getMethod() === 'POST') {
+        if ($request->getMethod() === 'POST' && !$loadFailed) {
             $body = $request->getParsedBody();
             $settings = is_array($body) && is_array($body['rte'] ?? null) ? $body['rte'] : [];
             try {
@@ -76,6 +80,8 @@ final readonly class RteManagerController
                 $view->addFlashMessage($exception->getMessage(), \Kst3\RteManager\Service\Localization::translate('label.rte.settings.not.saved', 'RTE settings not saved'), ContextualFeedbackSeverity::ERROR);
             } catch (IOExceptionInterface $exception) {
                 $view->addFlashMessage(\Kst3\RteManager\Service\Localization::translate('label.files.could.not.be.written.check.write.permissions.for.fileadmin.rte.manager.and.its', 'Files could not be written. Check write permissions for fileadmin/rte_manager and its Configuration, fonts and styles directories.'), \Kst3\RteManager\Service\Localization::translate('label.rte.settings.not.saved', 'RTE settings not saved'), ContextualFeedbackSeverity::ERROR);
+            } catch (\Kst3\RteManager\Service\PresetRollbackException $exception) {
+                $view->addFlashMessage(\Kst3\RteManager\Service\Localization::translate('label.preset.rollback.failed', 'Saving failed and the previous files could not be fully restored. Check filesystem permissions and restore Generated.yaml, fonts/fonts.css and styles/classes.css together from backup.'), '', ContextualFeedbackSeverity::ERROR);
             }
         }
 

@@ -2,14 +2,12 @@
 
 defined('TYPO3') or die();
 
-$GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['default']
-    = \Kst3\RteManager\Service\RteSettings::PRESET;
-
 // TYPO3 compiles ext_localconf.php into its cache, so __DIR__ would point there.
-\Kst3\RteManager\Service\RteSettings::ensurePreset();
-$rtePreset = \Symfony\Component\Yaml\Yaml::parseFile(
-    \Kst3\RteManager\Service\RteSettings::presetPath()
-);
+$rtePreset = \Kst3\RteManager\Service\RteSettings::loadPreset();
+$GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['default']
+    = \Kst3\RteManager\Service\RteSettings::loadError() === null
+        ? \Kst3\RteManager\Service\RteSettings::PRESET
+        : \Kst3\RteManager\Service\RteSettings::FALLBACK_PRESET;
 $rteFonts = \Kst3\RteManager\Service\HostedFonts::all($rtePreset['rteManager'] ?? []);
 if ($rteFonts !== []) {
     $rteFontCss = \Kst3\RteManager\Service\HostedFonts::stylesheetPath($rteFonts);

@@ -1,7 +1,9 @@
 import { Plugin, Command } from '@ckeditor/ckeditor5-core';
 import { Widget, toWidget } from '@ckeditor/ckeditor5-widget';
-import { createDropdown, addListToDropdown, ViewModel } from '@ckeditor/ckeditor5-ui';
+import { createDropdown, addToolbarToDropdown, ButtonView } from '@ckeditor/ckeditor5-ui';
 import { Collection } from '@ckeditor/ckeditor5-utils';
+
+const pickerIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2 2h7v7H2zm9 0h7v7h-7zM2 11h7v7H2zm12.5 0 4 7h-8z"/></svg>';
 
 // Use the same passive shape subset as the server when reopening pasted/saved HTML.
 export function cleanIconSvg(markup) {
@@ -67,12 +69,27 @@ export class RteIcons extends Plugin {
         editor.commands.add('rteIcon', new InsertIcon(editor));
         editor.ui.componentFactory.add('rteIcon', (locale) => {
             const dropdown = createDropdown(locale);
-            dropdown.buttonView.set({ label: (globalThis.TYPO3?.lang?.['js.rteManager.insert.icon'] ?? 'Insert icon'), withText: true, tooltip: true });
+            const label = globalThis.TYPO3?.lang?.['js.rteManager.insert.icon'] ?? 'Insert icon';
+            dropdown.buttonView.set({ label, icon: pickerIcon, withText: false, tooltip: true });
             const items = new Collection();
             for (const icon of editor.config.get('rteManagerIcons') ?? []) {
-                items.add({ type: 'button', model: new ViewModel({ label: icon.name, icon: cleanIconSvg(icon.svg), withText: true, iconId: icon.id }) });
+                const button = new ButtonView(locale);
+                button.set({ label: icon.name, icon: cleanIconSvg(icon.svg), withText: false, tooltip: true, iconId: icon.id });
+                // Preserve SVG fills (including fill="none") instead of the toolbar theme's recoloring.
+                button.iconView.isColorInherited = false;
+                button.extendTemplate({ attributes: { style: { width: '40px', height: '40px', 'min-width': '40px', padding: '6px', margin: '2px 1px' } } });
+                button.iconView.extendTemplate({ attributes: { style: { width: '28px', height: '28px' } } });
+                items.add(button);
             }
-            addListToDropdown(dropdown, items);
+            addToolbarToDropdown(dropdown, items, { ariaLabel: label, maxWidth: '264px' });
+            dropdown.on('change:isOpen', () => {
+                if (!dropdown.isOpen) return;
+                const toolbar = dropdown.toolbarView;
+                toolbar.element.style.maxHeight = '280px';
+                toolbar.element.style.overflowY = 'auto';
+                toolbar.itemsView.element.style.display = 'grid';
+                toolbar.itemsView.element.style.gridTemplateColumns = 'repeat(6, 42px)';
+            });
             dropdown.bind('isEnabled').to(editor.commands.get('rteIcon'), 'isEnabled', (enabled) => enabled && items.length > 0);
             this.listenTo(dropdown, 'execute', (event) => {
                 editor.execute('rteIcon', { id: event.source.iconId });

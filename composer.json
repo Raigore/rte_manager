@@ -11,6 +11,9 @@
     }
   ],
   "keywords": ["typo3", "rte", "ckeditor", "styles", "fonts"],
+  "support": {
+    "email": "konstantin.stolzenburg@gmail.com"
+  },
   "autoload": {
     "psr-4": { "Kst3\\RteManager\\": "Classes/" }
   },
